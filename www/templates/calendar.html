@@ -1,0 +1,15 @@
+<ion-view view-title="Agenda">
+  <ion-content>
+    <ion-list>
+      
+      	<div class="list list-inset">
+			<a class="item item-icon-right" href="#/app/date/{{i.id}}" ng:repeat="i in Dates">
+				{{i.date}}
+				<p>{{i.firstname}} {{i.lastname}}</p>
+				<i class="icon ion-chevron-right"></i>
+			</a>
+		</div>
+      
+    </ion-list>
+  </ion-content>
+</ion-view>

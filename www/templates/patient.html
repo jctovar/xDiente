@@ -1,0 +1,48 @@
+<ion-view view-title="Paciente">
+  <ion-content>
+    <br>
+    <br>
+    
+    
+    <div class="list card">
+
+	  <div class="item item-avatar">
+	    <img src="./img/user.png">
+	    <h2>{{myData.Firstname}} {{myData.Lastname}}</h2>
+	    <p>{{myData.Birthday}}</p>
+	  </div>
+	
+	  <div class="item item-body">
+	    <p>
+	      {{myData.Address1}} COLONIA: {{myData.Address2}} CP: {{myData.PostalCode}}<br />
+	      TEL 1:{{myData.Phone1}}<br />
+	      TEL 2:{{myData.Phone2}}<br />
+	      EMAIL: {{myData.Email}}
+	    </p>
+	    <p>
+	      <a href="#" class="subdued">1 Cita</a>
+	      <a href="#" class="subdued">5 Notas</a>
+	    </p>
+	  </div>
+	
+	  <div class="item tabs tabs-secondary tabs-icon-left">
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-calendar"></i>
+	      Agenda
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-clipboard"></i>
+	      Expediente
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-edit"></i>
+	      Editar
+	    </a>
+	  </div>
+	
+	</div>
+    
+    
+    
+  </ion-content>
+</ion-view>
