@@ -48,7 +48,9 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('PatientsCtrl', function($scope, $http) {
 
-	var responsePromise = $http.get("http://xdiente.goritec.com/rest/patients");
+	$scope.data = {};
+
+	responsePromise = $http.get("http://xdiente.goritec.com/api/patients/users/format/json");
 
     responsePromise.success(function(data, status, headers, config) {
         $scope.Products = data;
@@ -56,6 +58,18 @@ angular.module('starter.controllers', ['ngCordova'])
     responsePromise.error(function(data, status, headers, config) {
         alert("Error de conexion...!");
     });
+    $scope.clearSearch = function() {
+	    $scope.data.searchQuery = '';
+	    console.log('Clear...');
+	};
+	$scope.view = function(item) {
+		console.log('View...'+item);
+		window.location = '#/app/patient/'+item;
+	};
+	
+	$scope.edit = function(item) {
+		console.log('Edit...'+item);
+	};
 })
 
 .controller('DateCtrl', function($scope, $stateParams, $http) {
