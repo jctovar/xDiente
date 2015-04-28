@@ -35,7 +35,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('CalendarCtrl', function($scope, $http) {
 
-	var responsePromise = $http.get("http://xdiente.goritec.com/rest/calendar");
+	responsePromise = $http.get("http://xdiente.goritec.com/api/calendar/dates/format/json");
 
     responsePromise.success(function(data, status, headers, config) {
         $scope.Dates = data;
@@ -69,6 +69,7 @@ angular.module('starter.controllers', ['ngCordova'])
 	
 	$scope.edit = function(item) {
 		console.log('Edit...'+item);
+		window.location = '#/app/patient/'+item;
 	};
 })
 
@@ -130,12 +131,10 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('AboutCtrl', function($scope, $cordovaDevice, $cordovaAppVersion) {
+.controller('AboutCtrl', function($scope, $cordovaAppVersion) {
 	
-	document.addEventListener("deviceready", function () {
+	document.addEventListener("deviceready", function () {		
 		
-		$scope.deviceUUID = $cordovaDevice.getUUID();
-	
 		$cordovaAppVersion.getAppVersion().then(function (version) {
 			$scope.appVersion = version;
 		});

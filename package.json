@@ -16,7 +16,9 @@
   },
   "cordovaPlugins": [
     "org.apache.cordova.device",
-    "org.apache.cordova.contacts"
+    "org.apache.cordova.contacts",
+    "org.apache.cordova.network-information",
+    "org.apache.cordova.dialogs"
   ],
   "cordovaPlatforms": []
 }

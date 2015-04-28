@@ -1,7 +1,6 @@
 <ion-view view-title="Directorio de pacientes">
-  <ion-content>
   	<!-- Inicia caja de busqueda -->
-  	<div id="search-box" class="bar bar-header item-input-inset">
+  	<ion-header-bar id="search-box" class="bar bar-subheader item-input-inset">
         <div class="item-input-wrapper">
           <i class="icon ion-ios-search placeholder-icon"></i>
           <input type="search" placeholder="Buscar paciente..." ng-model="data.searchQuery">
@@ -10,9 +9,10 @@
         <button class="button button-clear" ng-click="clearSearch()">
           Cancelar
         </button>
-    </div>
+    </ion-header-bar>
+    <!-- Inicia listado de pacientes -->
+   <ion-content > 
 	<!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
-	
   	<ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
   		<ion-item collection-repeat="item in Products | filter: data.searchQuery" class="item-avatar">
 			
@@ -24,7 +24,6 @@
 			<ion-option-button class="button-assertive" ng-click="edit(item.id)">
 	            Editar
 	        </ion-option-button>
-	        
 	        <ion-option-button class="button-calm" ng-click="view(item.id)">
 	            Mostrar
 	        </ion-option-button>

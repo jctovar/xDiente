@@ -6,8 +6,19 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicPlatform, $ionicPopup, $cordovaNetwork, $cordovaDialogs) {
   $ionicPlatform.ready(function() {
+  
+  	document.addEventListener("deviceready", function () {
+	  	$rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+	      //alert('Net is:'+networkState);
+	      $cordovaDialogs.alert('Imposible conectarse al servidor, verifique su conexión a internet.', 'Alerta!', 'Aceptar')
+		    .then(function() {
+		      // callback success
+		  });
+	    })
+	}, false);
+  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
