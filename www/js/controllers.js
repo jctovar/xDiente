@@ -33,7 +33,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('CalendarCtrl', function($scope, $http) {
+.controller('CalendarCtrl', function($scope, $http, $cordovaCalendar) {
 
 	responsePromise = $http.get("http://xdiente.goritec.com/api/calendar/dates/format/json");
 
@@ -44,6 +44,32 @@ angular.module('starter.controllers', ['ngCordova'])
     responsePromise.error(function(data, status, headers, config) {
         alert("Error de conexion...!");
     });
+    
+    $scope.view = function(item) {
+		console.log('View...'+item);
+		window.location = '#/app/date/'+item;
+	};
+	
+	$scope.edit = function(item) {
+		console.log('Edit...'+item);
+		window.location = '#/app/date/'+item;
+	};
+    
+    $scope.export = function(item) {
+		console.log('Export...'+item);
+        alert("Desea exportar la cita a su agenda!");
+          $cordovaCalendar.createEvent({
+            title: 'Space Race',
+            location: 'The Moon',
+            notes: 'Bring sandwiches',
+            startDate: new Date(2015, 4, 5, 18, 30, 0, 0, 0),
+            endDate: new Date(2015, 4, 5, 20, 0, 0, 0, 0)
+          }).then(function (result) {
+            console.log('Event create...'+result);
+          }, function (err) {
+            console.log('Event err...'+item);
+          });
+	};
 })
 
 .controller('PatientsCtrl', function($scope, $http) {
@@ -58,11 +84,13 @@ angular.module('starter.controllers', ['ngCordova'])
     responsePromise.error(function(data, status, headers, config) {
         alert("Error de conexion...!");
     });
+    
     $scope.clearSearch = function() {
 	    $scope.data.searchQuery = '';
 	    console.log('Clear...');
 	};
-	$scope.view = function(item) {
+	
+    $scope.view = function(item) {
 		console.log('View...'+item);
 		window.location = '#/app/patient/'+item;
 	};
@@ -111,7 +139,7 @@ angular.module('starter.controllers', ['ngCordova'])
 	
 	// funcion de buscar producto en el servidor
 	function searchPatient(id){
-		var responsePromise = $http.get("http://xdiente.goritec.com/rest/patient/" + id);
+		var responsePromise = $http.get("http://xdiente.goritec.com/api/patients/user/id/"+ id + "/format/json");
 	
 	        responsePromise.success(function(data, status, headers, config) {
 	            $scope.myData.Firstname = data.firstname;
